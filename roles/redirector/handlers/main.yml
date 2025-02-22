@@ -1,0 +1,4 @@
+- name: restart redirector
+  shell:
+    chdir: /opt/redirector
+    cmd: "{{ docker_update_command }}"

@@ -1,0 +1,19 @@
+services:
+  redirector:
+    image: nginx:alpine
+    container_name: redirector
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.redirector.rule={% for mapping in redirector_domain_redirect_mapping %}{% if not loop.first %} || {% endif %}Host(`{{ mapping.old }}`){% endfor %}
+      
+      - traefik.http.routers.redirector.tls.certresolver=le
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - default
+      - traefik
+
+networks:
+  traefik:
+    external: true

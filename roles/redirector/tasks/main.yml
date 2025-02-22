@@ -1,0 +1,30 @@
+- name: Include redirects
+  include_vars: redirects.yml
+  tags: redirector
+
+- name: Create install directory
+  file:
+    path: /opt/redirector
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  tags: redirector
+
+- name: Install config file
+  template:
+    src: files/nginx.conf
+    dest: /opt/redirector/nginx.conf
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  notify: restart redirector
+  tags: redirector
+
+- name: Install compose file
+  template:
+    src: files/docker-compose.yml
+    dest: /opt/redirector/docker-compose.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: docker-compose -f %s config
+  notify: restart redirector
+  tags: redirector

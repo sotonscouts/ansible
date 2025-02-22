@@ -9,3 +9,4 @@
     - geerlingguy.docker
     - docker_cleanup
     - traefik
+    - redirector

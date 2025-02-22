@@ -1,0 +1,47 @@
+redirector_domain_redirect_mapping:
+  # Google Sites does not support bare domain redirects
+  - old: southamptoncityscouts.org.uk
+    new: www.southamptoncityscouts.org.uk
+
+  # Legacy
+  - old: southamptoncityscouts.co.uk
+    new: www.southamptoncityscouts.org.uk
+  - old: www.southamptoncityscouts.co.uk
+    new: www.southamptoncityscouts.org.uk
+
+  # Legacy 25th site
+  - old: 25th-southampton.org.uk
+    new: 25th.southamptoncityscouts.org.uk
+  - old: www.25th-southampton.org.uk
+    new: 25th.southamptoncityscouts.org.uk
+
+  # Group sites .co.uk -> .org.uk
+  - old: 1st.southamptoncityscouts.co.uk
+    new: 1st.southamptoncityscouts.org.uk
+  - old: 2nd.southamptoncityscouts.co.uk
+    new: 2nd.southamptoncityscouts.org.uk
+  - old: 7th.southamptoncityscouts.co.uk
+    new: 7th.southamptoncityscouts.org.uk
+  - old: 9th.southamptoncityscouts.co.uk
+    new: 9th.southamptoncityscouts.org.uk
+  - old: 11th.southamptoncityscouts.co.uk
+    new: 11th.southamptoncityscouts.org.uk
+  - old: 13th.southamptoncityscouts.co.uk
+    new: 13th.southamptoncityscouts.org.uk
+  - old: 14th.southamptoncityscouts.co.uk
+    new: 14th.southamptoncityscouts.org.uk
+  - old: 22nd.southamptoncityscouts.co.uk
+    new: 22nd.southamptoncityscouts.org.uk
+  - old: 25th.southamptoncityscouts.co.uk
+    new: 25th.southamptoncityscouts.org.uk
+  - old: 26th.southamptoncityscouts.co.uk
+    new: 26th.southamptoncityscouts.org.uk
+  - old: 29th.southamptoncityscouts.co.uk
+    new: 29th.southamptoncityscouts.org.uk
+
+  - old: network.southamptoncityscouts.co.uk
+    new: network.southamptoncityscouts.org.uk
+  - old: explorers.southamptoncityscouts.co.uk
+    new: explorers.southamptoncityscouts.org.uk
+  - old: wilverley.southamptoncityscouts.co.uk
+    new: wilverley.southamptoncityscouts.org.uk
