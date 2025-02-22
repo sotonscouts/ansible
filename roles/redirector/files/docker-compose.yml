@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     labels:
       - traefik.enable=true
-      - traefik.http.routers.redirector.rule={% for mapping in redirector_domain_redirect_mapping %}{% if not loop.first %} || {% endif %}Host(`{{ mapping.old }}`){% endfor %}
+      - traefik.http.routers.redirector.rule=Host(`archive.southamptoncityscouts.org.uk`) || {% for mapping in redirector_domain_redirect_mapping %}{% if not loop.first %} || {% endif %}Host(`{{ mapping.old }}`){% endfor %}
       
       - traefik.http.routers.redirector.tls.certresolver=le
     volumes:
