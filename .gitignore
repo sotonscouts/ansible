@@ -1,0 +1,6 @@
+etc/vault_secret.local.sh
+
+.venv/
+.vscode/
+galaxy_collections/
+galaxy_roles/

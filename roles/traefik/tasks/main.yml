@@ -1,0 +1,54 @@
+- name: Include vault
+  include_vars: vault.yml
+  tags: traefik
+
+- name: Create network
+  docker_network:
+    name: traefik
+    internal: true
+  tags: traefik
+
+- name: Create install directory
+  file:
+    path: /opt/traefik
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  tags: traefik
+
+- name: Create config directory
+  file:
+    path: /opt/traefik/traefik/
+    state: directory
+    mode: "{{ docker_compose_directory_mask }}"
+    owner: "{{ docker_user.name }}"
+  tags: traefik
+
+- name: Create file provider directory
+  file:
+    path: /opt/traefik/traefik/conf
+    state: directory
+    mode: "{{ docker_compose_directory_mask }}"
+    owner: "{{ docker_user.name }}"
+  tags: traefik
+
+- name: Install compose file
+  template:
+    src: files/docker-compose.yml
+    dest: /opt/traefik/docker-compose.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: docker-compose -f %s config
+  notify: restart traefik
+  tags: traefik
+
+- name: Install config
+  template:
+    src: files/traefik.yml
+    dest: /opt/traefik/traefik/traefik.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    lstrip_blocks: true
+    trim_blocks: true
+  notify: restart traefik
+  tags: traefik

@@ -1,0 +1,4 @@
+- name: reload firewall
+  command: nft -f /etc/nftables.conf
+  become: true
+  changed_when: true

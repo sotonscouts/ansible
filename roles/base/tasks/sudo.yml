@@ -1,0 +1,17 @@
+- name: Add config to sudoers.d
+  copy:
+    src: sudoers.d/nopasswd
+    dest: /etc/sudoers.d/nopasswd
+    backup: true
+    owner: root
+    group: root
+    mode: "0440"
+    validate: /usr/sbin/visudo -cf %s
+  become: true
+  tags: sudoers
+
+- name: Set Root password to none
+  user:
+    name: root
+    password: "!"
+  become: true

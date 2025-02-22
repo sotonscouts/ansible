@@ -1,0 +1,11 @@
+- hosts: all
+  roles:
+    - base
+    - geerlingguy.ntp
+    - hifis.toolkit.unattended_upgrades
+
+- hosts: ct1.southamptoncityscouts.org.uk
+  roles:
+    - geerlingguy.docker
+    - docker_cleanup
+    - traefik

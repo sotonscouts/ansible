@@ -1,0 +1,17 @@
+- name: Install essential utility commands
+  package:
+    name:
+      - ca-certificates
+      - cron
+      - curl
+      - dnsutils
+      - htop
+      - mtr-tiny
+      - tcpdump
+      - vim
+      - tmux
+      - wget
+    state: present
+
+- name: Setup sudo
+  include_tasks: sudo.yml
